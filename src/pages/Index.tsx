@@ -1,10 +1,5 @@
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Card } from "@/components/ui/card";
-import { Loader2, Download, Key, Image as ImageIcon } from "lucide-react";
 import { toast } from "sonner";
-import { cn } from "@/lib/utils";
 import { APIKeyInput } from "@/components/APIKeyInput";
 import { ImagePromptInput } from "@/components/ImagePromptInput";
 import { ImageDisplay } from "@/components/ImageDisplay";
@@ -42,21 +37,23 @@ const Index = () => {
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 p-6 flex flex-col">
       <div className="max-w-4xl mx-auto space-y-8 flex-grow">
         <div className="text-center space-y-2">
-          <h1 className="text-4xl font-bold tracking-tight">Image Generation</h1>
+          <h1 className="text-4xl font-bold tracking-tight bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
+            Image Generation
+          </h1>
           <p className="text-gray-500">Create stunning images with artificial intelligence</p>
         </div>
 
         <div className="space-y-6">
           <APIKeyInput apiKey={apiKey} setApiKey={setApiKey} />
           
-          <Card className="p-6 space-y-4 backdrop-blur-sm bg-white/80">
+          <div className="backdrop-blur-sm bg-white/80 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 p-6">
             <ImagePromptInput
               prompt={prompt}
               setPrompt={setPrompt}
               onGenerate={handleGenerate}
               isGenerating={isGenerating}
             />
-          </Card>
+          </div>
 
           <ImageDisplay image={generatedImage} isLoading={isGenerating} />
         </div>

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Eye, EyeOff, Key } from "lucide-react";
+import { Eye, EyeOff, Key, X } from "lucide-react";
 
 interface APIKeyInputProps {
   apiKey: string;
@@ -17,12 +17,30 @@ export const APIKeyInput = ({ apiKey, setApiKey }: APIKeyInputProps) => {
     localStorage.setItem("hf_api_key", value);
   };
 
+  const handleClearKey = () => {
+    setApiKey("");
+    localStorage.removeItem("hf_api_key");
+  };
+
   return (
-    <Card className="p-6 backdrop-blur-sm bg-white/80">
+    <Card className="p-6 backdrop-blur-sm bg-white/80 shadow-lg hover:shadow-xl transition-shadow duration-300">
       <div className="space-y-2">
-        <div className="flex items-center gap-2 text-sm font-medium text-gray-700">
-          <Key className="w-4 h-4" />
-          <span>HuggingFace API Key</span>
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2 text-sm font-medium text-gray-700">
+            <Key className="w-4 h-4" />
+            <span>HuggingFace API Key</span>
+          </div>
+          {apiKey && (
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={handleClearKey}
+              className="text-gray-500 hover:text-red-500"
+            >
+              <X className="w-4 h-4 mr-1" />
+              Clear
+            </Button>
+          )}
         </div>
         <div className="flex gap-2">
           <div className="relative flex-1">
