@@ -39,8 +39,8 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 p-6">
-      <div className="max-w-4xl mx-auto space-y-8">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 p-6 flex flex-col">
+      <div className="max-w-4xl mx-auto space-y-8 flex-grow">
         <div className="text-center space-y-2">
           <h1 className="text-4xl font-bold tracking-tight">Image Generation</h1>
           <p className="text-gray-500">Create stunning images with artificial intelligence</p>
@@ -61,6 +61,20 @@ const Index = () => {
           <ImageDisplay image={generatedImage} isLoading={isGenerating} />
         </div>
       </div>
+      
+      {/* Branding Footer */}
+      <footer className="mt-8 text-center">
+        <div className="flex items-center justify-center space-x-2">
+          <span className="text-gray-600">Powered by</span>
+          <a href="https://www.mobix.fr" target="_blank" rel="noopener noreferrer" className="inline-block">
+            <img 
+              src="https://www.mobix.fr/wp-content/themes/mobix/assets/svg/mobix-logo.svg" 
+              alt="MOBIX" 
+              className="h-6"
+            />
+          </a>
+        </div>
+      </footer>
     </div>
   );
 };
